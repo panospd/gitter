@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [[ "$1" == "-m" ]] 
+then
+    MESSAGE=$2
+    PUSH=$3
+    if [[ "$PUSH" == "-psu"  ]]
+    then 
+      BRANCH=$4
+    fi
+elif [[ "$2" == "-m" ]]
+then
+   MESSAGE=$3
+   PUSH=$1
+elif [[ "$3" == "-m" ]]
+then
+   MESSAGE=$4
+   PUSH=$1
+   BRANCH=$2
+fi
+
+[[ -z "$MESSAGE" ]] && { echo "You must provide a message" ; exit 1; }
+
+[[ -z "$BRANCH" ]] && [[ "$PUSH" == "-psu" ]] && { echo "You must provide a remote banch"; exit 1; }
+
+[[ ! -z "$PUSH"  ]] && [[ "$PUSH" != "-p" ]] && [[ "$PUSH" != "-psu" ]] && { echo "Not supported parameter" "$PUSH" ; exit 1;  }
+
+git add .
+git commit -m "$MESSAGE"
+
+if [[ "$PUSH" == "-p" ]]
+then
+git push
+echo "Successfully commited and pushed to origin!"
+elif [[ "$PUSH" == "-psu" ]]
+then
+git push --set-upstream origin "$BRANCH"
+echo "Successfully comitted and pushed to origin!"
+else
+echo "Successfully commited to local repo!"
+fi
