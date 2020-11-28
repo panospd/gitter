@@ -1,41 +1,55 @@
 #!/bin/bash
 
-if [[ "$1" == "-m" ]] 
-then
-    MESSAGE=$2
-    PUSH=$3
-    if [[ "$PUSH" == "-psu"  ]]
-    then 
-      BRANCH=$4
-    fi
-elif [[ "$2" == "-m" ]]
-then
-   MESSAGE=$3
-   PUSH=$1
-elif [[ "$3" == "-m" ]]
-then
-   MESSAGE=$4
-   PUSH=$1
-   BRANCH=$2
+usage() {
+  echo "Usage: ${0} -m MESSAGE [-p]";
+  echo "  -m MeSSAGE The commit message";
+  echo "  -p If specified will push changes to remote branch";
+  exit 1;
+}
+
+while getopts "m:p" OPT;
+do
+  case ${OPT} in
+    p) PUSH="git push" ;;
+    m) MESSAGE="${OPTARG}" ;;
+    ?) usage ;;
+  esac
+done
+
+[[ -z "$MESSAGE" ]] && { echo "You must provide a message" ; usage }
+
+git add . &>/dev/null
+
+if [[ "${?}" -ne 0 ]]
+then 
+  echo "Could not stage files" >&2
+  exit 1;
 fi
 
-[[ -z "$MESSAGE" ]] && { echo "You must provide a message" ; exit 1; }
+echo "Staged all files.";
 
-[[ -z "$BRANCH" ]] && [[ "$PUSH" == "-psu" ]] && { echo "You must provide a remote banch"; exit 1; }
+git commit -m "$MESSAGE" &>/dev/null
 
-[[ ! -z "$PUSH"  ]] && [[ "$PUSH" != "-p" ]] && [[ "$PUSH" != "-psu" ]] && { echo "Not supported parameter" "$PUSH" ; exit 1;  }
-
-git add .
-git commit -m "$MESSAGE"
-
-if [[ "$PUSH" == "-p" ]]
-then
-git push
-echo "Successfully commited and pushed to origin!"
-elif [[ "$PUSH" == "-psu" ]]
-then
-git push --set-upstream origin "$BRANCH"
-echo "Successfully comitted and pushed to origin!"
-else
-echo "Successfully commited to local repo!"
+if [[ "${?}" -ne 0 ]]
+then 
+  echo "Could commit succesfully." >&2
+  exit 1;
 fi
+
+echo "Commited changed."
+
+"${PUSH}";
+
+if [[ ! -z "${PUSH}" ]]
+then
+  "${PUSH}";
+  if [[ "${?}" -ne 0 ]]
+  then 
+    echo "Could not push changes to remote branch";
+    exit 1;
+  fi
+  
+  echo "Pushed changes to remote branch."
+fi
+
+exit 0;
