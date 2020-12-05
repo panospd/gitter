@@ -16,7 +16,13 @@ do
   esac
 done
 
-[[ -z "$MESSAGE" ]] && { echo "You must provide a message" ; usage }
+if [[ -z "$MESSAGE" ]] || [[ "${MESSAGE}" = '' ]] || [[ "${MESSAGE}" = -* ]]
+then 
+  echo "You must provide a message"; 
+  usage; 
+fi
+
+echo "heloo";
 
 git add . &>/dev/null
 
@@ -36,13 +42,13 @@ then
   exit 1;
 fi
 
-echo "Commited changed."
+echo "Commited changes."
 
-"${PUSH}";
+echo "${PUSH}"
 
 if [[ ! -z "${PUSH}" ]]
 then
-  "${PUSH}";
+  ${PUSH}
   if [[ "${?}" -ne 0 ]]
   then 
     echo "Could not push changes to remote branch";
