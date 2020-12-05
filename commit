@@ -22,8 +22,6 @@ then
   usage; 
 fi
 
-echo "heloo";
-
 git add . &>/dev/null
 
 if [[ "${?}" -ne 0 ]]
