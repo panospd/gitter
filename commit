@@ -7,11 +7,15 @@ usage() {
   exit 1;
 }
 
-while getopts "m:p" OPT;
+REMOTE='origin'
+BRANCH=$(git branch --show-current);
+
+while getopts "m:pr:" OPT;
 do
   case ${OPT} in
     p) PUSH="git push" ;;
     m) MESSAGE="${OPTARG}" ;;
+    r) REMOTE="${OPTARG}" ;;
     ?) usage ;;
   esac
 done
@@ -42,18 +46,16 @@ fi
 
 echo "Commited changes."
 
-echo "${PUSH}"
-
 if [[ ! -z "${PUSH}" ]]
 then
-  ${PUSH}
+  ${PUSH} ${REMOTE} ${BRANCH}
   if [[ "${?}" -ne 0 ]]
   then 
-    echo "Could not push changes to remote branch";
+    echo "Could not push changes to ${REMOTE} ${BRANCH}";
     exit 1;
   fi
   
-  echo "Pushed changes to remote branch."
+  echo "Pushed changes to ${REMOTE} ${BRANCH}."
 fi
 
 exit 0;
