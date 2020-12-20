@@ -7,6 +7,13 @@ usage() {
   exit 1;
 }
 
+isgit;
+
+if [[ "${?}" -ne 0 ]]
+then 
+  exit 2;
+fi
+
 REMOTE='origin'
 BRANCH=$(git branch --show-current);
 
