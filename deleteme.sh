@@ -17,7 +17,7 @@ GOTOBRANCH=master;
 
 while getopts "g:" OPT
 do
-  case "{OPT}" in
+  case ${OPT} in
     g) GOTOBRANCH=${OPTARG} ;;
     *) usage ;;
   esac
