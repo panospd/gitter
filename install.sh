@@ -8,10 +8,17 @@ fi
 
 echo "Deploying scripts.."
 
-for f in *
+for f in *.sh
 do
- chmod 755 $f;
- cp $f /usr/local/bin;
+ if [[ $f = "install.sh" ]]
+ then
+  continue;
+ fi
+
+ file=$(echo "$f" | cut -f 1 -d '.')
+ path="/usr/local/bin/${file}";
+ cp $f "/usr/local/bin/${file}";
+ chmod 755 $path;
 done
 
 echo "Scripts deployed succesfully!";
