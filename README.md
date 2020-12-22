@@ -5,8 +5,13 @@ A lightweight git wrapper for the command line to boost productivity.
 Download the zipped package and unzip it. Navigate in the root directory where the install.sh file exists. Run "sudo ./install.sh"
 
 # Usage
-commit -m "Your message" [-p] instead of git add . && git commit -m "Your message" && git push
-deleteme [-g BRANCHTOGOTO] instead of git checkout BRANCHTOGOTO && git branch -d BRANCHTODELETE
+### commit -m "Your message" [-p] 
+#### instead of 
+#### git add . && git commit -m "Your message" && git push
+
+### deleteme [-g BRANCHTOGOTO] 
+#### instead of 
+#### git checkout BRANCHTOGOTO && git branch -d BRANCHTODELETE
 
 More to come for merges, PRs
 
