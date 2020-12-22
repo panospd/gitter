@@ -9,7 +9,7 @@ Download the zipped package and unzip it. Navigate in the root directory where t
 #### instead of 
 #### git add . && git commit -m "Your message" && git push
 
-### deleteme [-g BRANCHTOGOTO] 
+### deleteme [-g BRANCHTOGOTO] defaults to master 
 #### instead of 
 #### git checkout BRANCHTOGOTO && git branch -d BRANCHTODELETE
 
