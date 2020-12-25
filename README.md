@@ -5,14 +5,15 @@ A lightweight git wrapper for the command line to boost productivity.
 Download the zipped package and unzip it. Navigate in the root directory where the install.sh file exists. Run "sudo ./install.sh"
 
 # Usage
-Git commit made easy. stage commit and optionally push changes in one command.
-Example: commit -m "Your message" [-p]
--m option is the message option parameter and -p is optional parameter that, when specified pushes changes to remote origin
+### commit -m "Your message" [-p] 
+#### instead of 
+#### git add . && git commit -m "Your message" && git push
 
-Deleting branch made easy.
-The current branch can be deleted by simply running a command and optionally provide a branch to go to. The branch to go to defaults to master.
-deleteme [-g BRANCHTOGOTO]
-The above command will git checkout BRANCHTOGOTO and then will delete the previously checked out branch
+### deleteme [-g BRANCHTOGOTO] defaults to master 
+#### instead of 
+#### git checkout BRANCHTOGOTO && git branch -d BRANCHTODELETE
+
+More to come for merges, PRs
 
 # License
 
