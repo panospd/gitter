@@ -32,7 +32,25 @@ then
 fi
 
 git checkout $GOTOBRANCH;
-git branch -d $BRANCHTODELETE;
+
+if [[ "${?}" -ne 0 ]]
+then
+  echo "Could not checkout ${GOTOBRANCH}" >&2;
+  exit 1;
+fi
+
+git branch -d $BRANCHTODELETE &> /dev/null
+
+if [[ "${?}" -ne 0 ]]
+then
+  echo "Force deletion of ${BRANCHTODELETE}?";
+  read FORCEDELETE;
+  if [[ "${FORCEDELETE}" = "y" ]]
+  then
+    git branch -D $BRANCHTODELETE;
+    exit 0;
+  fi
+fi
 
 exit 0;
 
