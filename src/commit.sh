@@ -55,14 +55,7 @@ echo "Commited changes."
 
 if [[ ! -z "${PUSH}" ]]
 then
-  ${PUSH} ${REMOTE} ${BRANCH}
-  if [[ "${?}" -ne 0 ]]
-  then 
-    echo "Could not push changes to ${REMOTE} ${BRANCH}";
-    exit 1;
-  fi
-  
-  echo "Pushed changes to ${REMOTE} ${BRANCH}."
+  push ${REMOTE} ${BRANCH}
 fi
 
 exit 0;
