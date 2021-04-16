@@ -46,7 +46,7 @@ then
   echo "Force deletion of ${BRANCHTODELETE}?(y/n)";
   read FORCEDELETE;
 
-  while [[ "${FORCEDELETE}" != "y" ]] || [[ "${FORCEDELETE}" != "n" ]] )
+  while [[ "${FORCEDELETE}" != "y" ]] || [[ "${FORCEDELETE}" != "n" ]] 
   do 
     echo "Allowed input is y or n."
     read FORCEDELETE;
@@ -55,10 +55,12 @@ then
   if [[ "${FORCEDELETE}" = "y" ]]
   then
     git branch -D $BRANCHTODELETE;
+    echo "Successfully force-deleted ${BRANCHTODELETE}"
     exit 0;
   fi
 fi
 
+echo "Successfully deleted ${BRANCHTODELETE}"
 exit 0;
 
 
