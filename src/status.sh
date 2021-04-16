@@ -1,0 +1,2 @@
+isgit;
+git status
