@@ -45,8 +45,8 @@ fi
 
 echo "Staged all files.";
 
-$REMOTE
-$BRANCH
+echo $REMOTE
+echo $BRANCH
 
 git commit -m "$MESSAGE" &>/dev/null
 
