@@ -41,7 +41,6 @@ then
     shift;
 fi
 
-
 git push ${REMOTE} ${BRANCH} > /dev/null
 
 if [[ "${?}" -ne 0 ]]
