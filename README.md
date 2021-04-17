@@ -12,15 +12,23 @@ A lightweight git wrapper for the command line to boost productivity.
 
 ## Commit changes
 
-### commit -m "Your message" [-p Optional flag to push changes in remote branch]
+### Commit and optionally push changes to remote. You can use the commit command or the more compact aliases cmt or ct
 
-#### Instead of commit you can use cmt or ct.
+#### commit -m "Your message" [-p Optional flag to push changes in remote branch]
+
+#### cmt -m "Your message" [-p]
+
+#### ct -m "Your message" [-p]
 
 ## Push changes
 
 ### If changes are already committed locally then u can push your changes to remote by simply executing the push command.
 
-#### push;
+#### Use case:
+
+##### ct -m 'your message';
+
+##### push;
 
 ## Status
 
