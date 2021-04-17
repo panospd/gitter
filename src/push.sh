@@ -20,7 +20,11 @@ BRANCH=$(git branch --show-current);
 while getopts "r" OPT;
 do
   case ${OPT} in
-    r) REMOTE="${OPTARG}" ;;
+    r) 
+      REMOTE="${OPTARG}" 
+      shift;
+      shift;
+      ;;
     ?) usage ;;
   esac
 done
