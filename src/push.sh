@@ -17,7 +17,7 @@ fi
 REMOTE='origin'
 BRANCH=$(git branch --show-current);
 
-while getopts "r" OPT;
+while getopts "r:" OPT;
 do
   case ${OPT} in
     r) 
