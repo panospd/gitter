@@ -43,6 +43,7 @@ then
   exit 1;
 fi
 
+
 echo "Staged all files.";
 
 echo $REMOTE
