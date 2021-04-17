@@ -45,6 +45,9 @@ fi
 
 echo "Staged all files.";
 
+$REMOTE
+$BRANCH
+
 git commit -m "$MESSAGE" &>/dev/null
 
 if [[ "${?}" -ne 0 ]]
