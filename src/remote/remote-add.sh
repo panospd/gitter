@@ -35,3 +35,12 @@ then
 fi
 
 git remote add $REMOTE $1;
+
+if [[ "${?}" -ne 0 ]]
+then 
+  echo "Error: Could not add remote ${REMOTE}, url: $1"
+  exit 2;
+fi
+
+echo "Successfully added remote ${REMOTE}"
+exit 0
