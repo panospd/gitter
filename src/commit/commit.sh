@@ -49,7 +49,7 @@ git commit -m "$MESSAGE" &>/dev/null
 
 if [[ "${?}" -ne 0 ]]
 then 
-  echo "Could commit succesfully." >&2
+  echo "Could not commit succesfully." >&2
   exit 1;
 fi
 
