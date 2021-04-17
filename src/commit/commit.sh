@@ -21,7 +21,6 @@ while getopts "m:p:" OPT;
 do
   case ${OPT} in
     p) 
-      PUSH="git push" 
       REMOTE="${OPTARG}"
       ;;
     m) MESSAGE="${OPTARG}" ;;
