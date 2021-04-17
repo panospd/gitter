@@ -21,14 +21,14 @@ do
   case ${OPT} in
     r) 
       REMOTE="${OPTARG}" 
-        shift;
-        shift  
+      shift $((OPTIND-1))
+      shift $((OPTIND-1)) 
       ;;
     ?) usage ;;
   esac
 done
 
-if [[ $# -ne 1 ]]
+if [[ "${#}" -ne 1 ]]
 then
   echo "${0} expects only one argument, which is the url of the remote to be added";
   usage;

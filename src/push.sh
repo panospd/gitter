@@ -22,8 +22,8 @@ do
   case ${OPT} in
     r) 
       REMOTE="${OPTARG}" 
-      shift;
-      shift;
+      shift $((OPTIND-1))
+      shift $((OPTIND-1))
       ;;
     ?) usage ;;
   esac
@@ -40,10 +40,6 @@ then
     BRANCH=$1;
     shift;
 fi
-
-echo "From push, remote: ${REMOTE}"
-
-echo "From push, BRANCH: ${BRANCH}"
 
 git push ${REMOTE} ${BRANCH}
 
