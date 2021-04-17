@@ -28,7 +28,7 @@ A lightweight git wrapper for the command line to boost productivity.
 
 ##### ct -m 'your message';
 
-##### push;
+##### push [-r REMOTE_NAME] [BRANCHNAME];
 
 ## Status
 
