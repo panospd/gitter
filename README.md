@@ -14,11 +14,11 @@ A lightweight git wrapper for the command line to boost productivity.
 
 ### Commit and optionally push changes to remote. You can use the commit command or the more compact aliases cmt or ct
 
-#### commit -m "Your message" [-p Optional flag to push changes in remote branch]
+#### commit -m "Your message" [-p Optional flag to push changes in remote branch] [REMOTE_NAME]
 
-#### cmt -m "Your message" [-p]
+#### cmt -m "Your message" [-p] [REMOTE_NAME]
 
-#### ct -m "Your message" [-p]
+#### ct -m "Your message" [-p] [REMOTE_NAME]
 
 ## Push changes
 
