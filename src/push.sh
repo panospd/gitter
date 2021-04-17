@@ -41,6 +41,10 @@ then
     shift;
 fi
 
+echo "From push, remote: ${REMOTE}"
+
+echo "From push, BRANCH: ${BRANCH}"
+
 git push ${REMOTE} ${BRANCH}
 
 if [[ "${?}" -ne 0 ]]
