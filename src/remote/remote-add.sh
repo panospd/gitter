@@ -28,6 +28,7 @@ do
   esac
 done
 
+
 if [[ "${#}" -ne 1 ]]
 then
   echo "${0} expects only one argument, which is the url of the remote to be added";
