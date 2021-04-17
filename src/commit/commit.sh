@@ -1,9 +1,9 @@
 #!/bin/bash
 
 usage() {
-  echo "Usage: ${0} -m MESSAGE [-p]";
-  echo "  -m MeSSAGE The commit message";
-  echo "  -p If specified will push changes to remote branch";
+  echo "Usage: ${0} -m 'COMMIT_MESSAGE' [-p 'REMOTE_NAME']";
+  echo "  -m COMMIT_MESSAGE The commit message";
+  echo "  -p REMOTE_NAME If specified will push changes to respective remote";
   exit 1;
 }
 
@@ -17,12 +17,14 @@ fi
 REMOTE='origin'
 BRANCH=$(git branch --show-current);
 
-while getopts "m:pr:" OPT;
+while getopts "m:p" OPT;
 do
   case ${OPT} in
-    p) PUSH="git push" ;;
+    p) 
+      PUSH="git push" 
+      REMOTE="${OPTARG}"
+      ;;
     m) MESSAGE="${OPTARG}" ;;
-    r) REMOTE="${OPTARG}" ;;
     ?) usage ;;
   esac
 done
@@ -47,7 +49,7 @@ git commit -m "$MESSAGE" &>/dev/null
 
 if [[ "${?}" -ne 0 ]]
 then 
-  echo "Could commit succesfully." >&2
+  echo "Could commit succesfully." > &2
   exit 1;
 fi
 
