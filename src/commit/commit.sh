@@ -25,8 +25,7 @@ do
       PUSH=1
       ;;
     m) 
-      MESSAGE="${OPTARG}" 
-      shift $((OPTIND-1))
+      MESSAGE="${OPTARG}"
       ;;
     ?) usage ;;
   esac
