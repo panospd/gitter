@@ -9,7 +9,7 @@ fi
 
 echo "Uninstalling gitter...";
 
-for f in ./src/*.sh
+for f in $(find . -name "*.sh")
 do
   filename=$(basename -- "${f}");
   filename="${filename%.*}";

@@ -9,11 +9,12 @@ fi
 
 echo "Deploying scripts.."
 
-for f in ./src/*.sh
+for f in $(find . -name "*.sh")
 do
  file=$(basename -- "${f}");
  file="${file%.*}";
  path="/usr/local/bin/${file}";
+ 
  cp $f "/usr/local/bin/${file}";
  chmod 755 $path;
 done
