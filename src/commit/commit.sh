@@ -22,6 +22,7 @@ do
   case ${OPT} in
     p) 
       REMOTE="${OPTARG}"
+      PUSH=1
       ;;
     m) MESSAGE="${OPTARG}" ;;
     ?) usage ;;
@@ -57,7 +58,7 @@ fi
 
 echo "Commited changes."
 
-if [[ ! -z "${PUSH}" ]]
+if [[ "${PUSH}" -eq 1 ]]
 then
   $(push -r ${REMOTE} ${BRANCH})
 fi
