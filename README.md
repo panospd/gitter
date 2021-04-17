@@ -1,19 +1,62 @@
 # gitter
-A lightweight git wrapper for the command line to boost productivity. 
+
+A lightweight git wrapper for the command line to boost productivity.
 
 # Installation
-Download the zipped package and unzip it. Navigate in the root directory where the install.sh file exists. Run "sudo ./install.sh"
 
-# Usage
-### commit -m "Your message" [-p] 
-#### instead of 
-#### git add . && git commit -m "Your message" && git push
+## Download the zipped package and unzip it. Navigate in the root directory where the install.sh file exists. Run "sudo ./install.sh"
 
-### deleteme [-g BRANCHTOGOTO] defaults to master 
-#### instead of 
-#### git checkout BRANCHTOGOTO && git branch -d BRANCHTODELETE
+### This will copy all the relevant script files and paste them under the /usr/local/bin/ folder. This folder is aleady part of the path hence you can start using gitter right away.
 
-More to come for merges, PRs
+# How to use
+
+## Commit changes
+
+### commit -m "Your message" [-p Optional flag to push changes in remote branch]
+
+#### Instead of commit you can use cmt or ct.
+
+## Push changes
+
+### If changes are already committed locally then u can push change to remote by simply executing the push command.
+
+#### push;
+
+## Status
+
+### You can check the status by simply executing the status command. You can do it by simply typing status or st and execute.
+
+## Fetch from remote
+
+### You fetch from remote by simply executing the fetch command. You can do it by simply typing fetch or fch and execute
+
+## Undo changes
+
+### You can undo tracked or untracked changes by simply executing the undo command with no arguments.
+
+## Delete branch
+
+### Deletes the current branch and optionally checks a specified branch. By default the target branch to checkout is master
+
+#### deleteme [-g BRANCHTOGOTO]
+
+## New branch
+
+### Checkout existing or create new branch and check it out. Can optionally provide the -s flag to create the branch but stay in the currently checked out.
+
+#### new [-s] BRANCHTOCHECKOUT
+
+## Clear terminal
+
+### A couple of aliases to clear the terminal
+
+#### Type c or cls and is equivalent to clear.
+
+# Uninstall gitter
+
+## Simply go to the root of the gitter folder and run sudo ./uninstall.sh
+
+### The command will uninstall all scripts from your /usr/local/bin/ folder
 
 # License
 
