@@ -49,7 +49,7 @@ echo $REMOTE
 echo $BRANCH
 echo $MESSAGE
 
-git commit -m "$MESSAGE" &>/dev/null
+git commit -m "${MESSAGE}" &>/dev/null
 
 if [[ "${?}" -ne 0 ]]
 then 
