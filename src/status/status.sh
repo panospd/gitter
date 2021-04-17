@@ -1,4 +1,6 @@
 #!/bin/bash
 
 isgit;
-git status
+git status;
+
+exit 0;

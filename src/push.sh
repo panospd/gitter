@@ -35,3 +35,4 @@ then
 fi
 
 echo "Pushed changes to ${REMOTE} ${BRANCH}."
+exit 0;

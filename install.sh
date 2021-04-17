@@ -20,3 +20,4 @@ do
 done
 
 echo "Scripts deployed succesfully!";
+exit 0;
