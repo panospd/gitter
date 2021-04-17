@@ -16,7 +16,7 @@ fi
 
 REMOTE='origin'
 
-while getopts "r" OPT;
+while getopts "r:" OPT;
 do
   case ${OPT} in
     r) 
@@ -33,6 +33,9 @@ then
   echo "${0} expects only one argument, which is the url of the remote to be added";
   usage;
 fi
+
+echo $REMOTE
+echo $1
 
 git remote add $REMOTE $1;
 
