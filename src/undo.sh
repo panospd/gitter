@@ -1,5 +1,6 @@
 #!/bin/bash
 
+isgit;
 git checkout -- .
 
 if [[ "${?}" -ne 0 ]]
