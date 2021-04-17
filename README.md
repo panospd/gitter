@@ -6,7 +6,7 @@ A lightweight git wrapper for the command line to boost productivity.
 
 ## Download the zipped package and unzip it. Navigate in the root directory where the install.sh file exists. Run "sudo ./install.sh"
 
-### This will copy all the relevant script files and paste them under the /usr/local/bin/ folder. This folder is aleady part of the path hence you can start using gitter right away.
+### This will copy all gitter script files and paste them under the /usr/local/bin/ folder. This folder is aleady part of the path hence you can start using gitter right away.
 
 # How to use
 
@@ -18,7 +18,7 @@ A lightweight git wrapper for the command line to boost productivity.
 
 ## Push changes
 
-### If changes are already committed locally then u can push change to remote by simply executing the push command.
+### If changes are already committed locally then u can push your changes to remote by simply executing the push command.
 
 #### push;
 
@@ -28,7 +28,7 @@ A lightweight git wrapper for the command line to boost productivity.
 
 ## Fetch from remote
 
-### You fetch from remote by simply executing the fetch command. You can do it by simply typing fetch or fch and execute
+### You can fetch from remote by simply executing the fetch command. You can do it by simply typing fetch or fch and execute
 
 ## Undo changes
 
@@ -56,7 +56,7 @@ A lightweight git wrapper for the command line to boost productivity.
 
 ## Simply go to the root of the gitter folder and run sudo ./uninstall.sh
 
-### The command will uninstall all scripts from your /usr/local/bin/ folder
+### The command will uninstall all gitter scripts from your /usr/local/bin/ folder
 
 # License
 
