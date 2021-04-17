@@ -59,7 +59,7 @@ echo "Commited changes."
 
 if [[ ! -z "${PUSH}" ]]
 then
-  push -r ${REMOTE} ${BRANCH}
+  $(push -r ${REMOTE} ${BRANCH})
 fi
 
 exit 0;
