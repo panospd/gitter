@@ -2,6 +2,7 @@
 
 isgit;
 git checkout -- .
+git clean -n
 
 if [[ "${?}" -ne 0 ]]
 then
