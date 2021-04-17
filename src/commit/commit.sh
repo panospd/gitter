@@ -62,7 +62,7 @@ fi
 
 echo "Staged all files.";
 
-git commit -m "${MESSAGE}" > /dev/null
+git commit -m "${MESSAGE}" &> /dev/null
 
 if [[ "${?}" -ne 0 ]]
 then 
