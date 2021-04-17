@@ -23,16 +23,16 @@ do
   case ${OPT} in
     p) 
       PUSH=1
-      shift $((OPTIND-1))
       ;;
     m) 
       MESSAGE="${OPTARG}" 
-      shift $((OPTIND-1))
       shift $((OPTIND-1))
       ;;
     ?) usage ;;
   esac
 done
+
+shift $((OPTIND-1))
 
 if [[ -z "$MESSAGE" ]] || [[ "${MESSAGE}" = '' ]] || [[ "${MESSAGE}" = -* ]]
 then 

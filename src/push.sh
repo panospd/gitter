@@ -22,12 +22,12 @@ do
   case ${OPT} in
     r) 
       REMOTE="${OPTARG}" 
-      shift $((OPTIND-1))
-      shift $((OPTIND-1))
       ;;
     ?) usage ;;
   esac
 done
+
+shift $((OPTIND-1))
 
 if [[ "$#" -gt 1 ]]
 then 

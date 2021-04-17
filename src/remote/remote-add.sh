@@ -20,14 +20,13 @@ while getopts "r:" OPT;
 do
   case ${OPT} in
     r) 
-      REMOTE="${OPTARG}" 
-      shift $((OPTIND-1))
-      shift $((OPTIND-1)) 
+      REMOTE="${OPTARG}"
       ;;
     ?) usage ;;
   esac
 done
 
+shift $((OPTIND-1))
 
 if [[ "${#}" -ne 1 ]]
 then
