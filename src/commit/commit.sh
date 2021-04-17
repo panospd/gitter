@@ -32,6 +32,8 @@ do
   esac
 done
 
+echo "PUSH IS ${PUSH}"
+
 shift $((OPTIND-1))
 
 if [[ -z "$MESSAGE" ]] || [[ "${MESSAGE}" = '' ]] || [[ "${MESSAGE}" = -* ]]
