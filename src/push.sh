@@ -17,14 +17,25 @@ fi
 REMOTE='origin'
 BRANCH=$(git branch --show-current);
 
-while getopts "o:b:" OPT;
+while getopts "r" OPT;
 do
   case ${OPT} in
-    o) REMOTE="${OPTARG}" ;;
-    B) BRANCH="${OPTARG}" ;;
+    r) REMOTE="${OPTARG}" ;;
     ?) usage ;;
   esac
 done
+
+if [[ "$#" -gt 1 ]]
+then 
+    echo "${0} expects only on optional argument, which is the branch name to push changes against.";
+    exit 1;
+fi
+
+if [[ "$#" -eq 1 ]]
+then 
+    BRANCH=$1;
+    shift;
+fi
 
 git push ${REMOTE} ${BRANCH}
 
