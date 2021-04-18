@@ -10,6 +10,10 @@ A lightweight git wrapper for the command line to boost productivity.
 
 # How to use
 
+## Repo initialization
+
+### You can initialise or clone your repositories the usual way. git init or git clone 'url'
+
 ## Commit changes
 
 ### Commit and optionally push changes to remote. You can use the commit command or the more compact aliases cmt or ct
