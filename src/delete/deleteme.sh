@@ -72,10 +72,10 @@ done
 if [[ "${FORCEDELETE}" = "y" ]]
 then
   git branch -D $BRANCHTODELETE;
-  echo "Successfully force-deleted ${BRANCHTODELETE}"
+  echo "Successfully force-deleted ${BRANCHTODELETE} branch"
   exit 0;
 else
-  echo "${BRANCHTODELETE} was NOT deleted."
+  echo "${BRANCHTODELETE} branch was NOT deleted."
   exit 0;
 fi
 
