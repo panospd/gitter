@@ -1,6 +1,6 @@
 # gitter
 
-A lightweight git wrapper for the command line to boost productivity.
+A lightweight git wrapper for the command line (bash shell) to boost productivity.
 
 # Installation
 
