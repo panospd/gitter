@@ -6,6 +6,15 @@ usage() {
   exit 1;
 }
 
+forceDeleteInputValidation() {
+  if [[ ${FORCEDELETE} == "y" ]] || [[ ${FORCEDELETE} == "n" ]] 
+  then
+    VALIDINPUT = 'true';
+  else
+    VALIDINPUT = 'false';
+  fi
+}
+
 isgit;
 
 if [[ "${?}" -ne 0 ]]
@@ -46,7 +55,7 @@ then
   echo "Force deletion of ${BRANCHTODELETE}?(y/n)";
   read FORCEDELETE;
 
-  VALIDINPUT = ''
+  VALIDINPUT=''
   forceDeleteInputValidation;
   while [[ $VALIDINPUT == 'false' ]] 
   do
