@@ -23,13 +23,13 @@ then
     usage;
 fi
 
-if [[ "$#" -eq 0 ]]
+if [[ "$#" -gt 0 ]]
 then 
     REMOTE=$1;
     shift;
 fi
 
-if [[ "$#" -eq 0 ]]
+if [[ "$#" -gt 0 ]]
 then 
     BRANCH=$1;
     shift;
