@@ -14,6 +14,15 @@ usage() {
   exit 1;
 }
 
+checkoutExistingBranchInputValidation() {
+  if [[ ${CHECKOUTBRANCH} == "y" ]] || [[ ${CHECKOUTBRANCH} == "n" ]] 
+  then
+    VALIDINPUT='true';
+  else
+    VALIDINPUT='false';
+  fi
+}
+
 CHECKOUTNEWBRANCH="true";
 
 while getopts "s" OPT
@@ -33,26 +42,45 @@ then
 fi
 
 NEWBRANCH=$1;
-echo $NEWBRANCH;
+CURRENTBRANCH=$(git branch --show-current);
+
 BRANCHALREADYEXISTS=$(git branch --list $NEWBRANCH);
+
+if [[ "$CURRENTBRANCH" = "${NEWBRANCH}" ]]
+then
+  echo "You are already in ${CURRENTBRANCH} branch";
+  exit 0;
+fi
+
+if [[ "${CHECKOUTNEWBRANCH}" = 'false' ]] && [[ "${BRANCHALREADYEXISTS}" == *"$NEWBRANCH"* ]]
+then
+  echo "Branch ${NEWBRANCH} already exists. Nothing to be done."
+  echo "Currently in branch ${CURRENTBRANCH}"
+  exit 0;
+fi
 
 if [[ "${BRANCHALREADYEXISTS}" == *"$NEWBRANCH"* ]]
 then
-  echo "Branch already exists. Do u want to checkout $NEWBRANCH? (y/n)"
-  read CHECKOUTBRANCH;
+  echo "Branch already exists. Do u want to checkout $NEWBRANCH? (y/n)";
+
+  VALIDINPUT='false';
+  while [[ $VALIDINPUT == 'false' ]] 
+  do
+    echo "Allowed input is y or n."
+    read CHECKOUTBRANCH;
+
+    checkoutExistingBranchInputValidation;
+  done
+
   if [[ "${CHECKOUTBRANCH}" = "y" ]]
   then
-    CURRENTBRANCH=$(git branch --show-current);
-    echo $NEWBRANCH;  
-    if [[ "$CURRENTBRANCH" = "${NEWBRANCH}" ]]
-    then
-      echo "You are already in ${CURRENTBRANCH}";
-      exit 0;
-    fi
     git checkout $NEWBRANCH;
+    echo "Switched to branch ${NEWBRANCH}";
+    exit 0;
+  else
+    echo "Nothing to be done. Currently in branch ${CURRENTBRANCH}"
+    exit 0;
   fi
-
-  exit 0;
 fi
 
 if [[ "${CHECKOUTNEWBRANCH}" = 'true' ]]
@@ -71,6 +99,6 @@ fi
 echo "Successfully created branch $NEWBRANCH";
 
 BRANCHNOW=$(git branch --show-current);
-echo "You are in $BRANCHNOW";
+echo "You are in branch $BRANCHNOW";
 
 exit 0;
