@@ -1,9 +1,10 @@
 #!/bin/bash
 
 usage() {
-  echo "Usage: deleteme [-g GOTOBRANCH] [BRANCHTODELETE]" >&2;
+  echo "Usage: deleteme [-g GOTOBRANCH] [-f] [BRANCHTODELETE]" >&2;
+  echo "-f Optional. Force delete flag" >&2;
   echo "-g Optional. The branch to checkout, default is master" >&2;
-  echo "BRANCHTODELETE Optional. The branch to delete, defaults to currently checked out" >&2;
+  echo "BRANCHTODELETE Optional. The branch to delete, default to currently checked out" >&2;
   exit 1;
 }
 
@@ -34,7 +35,19 @@ do
   esac
 done
 
-BRANCHTODELETE=$(git branch --show-current);
+shift $((OPTIND-1))
+
+if [[ "${#}" -gt 1 ]]
+then
+  usage;
+fi
+
+if [[ "${#}" -gt 0 ]]
+then
+  BRANCHTODELETE=$1;
+else
+  BRANCHTODELETE=$(git branch --show-current);
+fi
 
 if [[ $BRANCHTODELETE = $GOTOBRANCH ]]
 then
