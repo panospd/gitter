@@ -1,9 +1,9 @@
 #!/bin/bash
 
 usage() {
-  echo "Usage: ${0} [-o ORIGIN] [-b BRANCH]";
-  echo "  -o ORIGIN The remote origin of git";
-  echo "  -b BRANCH The branch to push changes against";
+  echo "Usage: ${0} [REMOTE_NAME] [REMOTE_BRANCH]";
+  echo " REMOTE_NAME The remote to push changes to";
+  echo " REMOTE_BRANCH The remote branch to push changes against";
   exit 1;
 }
 
@@ -17,25 +17,19 @@ fi
 REMOTE='origin'
 BRANCH=$(git branch --show-current);
 
-while getopts "r:" OPT;
-do
-  case ${OPT} in
-    r) 
-      REMOTE="${OPTARG}" 
-      ;;
-    ?) usage ;;
-  esac
-done
-
-shift $((OPTIND-1))
-
-if [[ "$#" -gt 1 ]]
+if [[ "$#" -gt 2 ]]
 then 
-    echo "${0} expects only on optional argument, which is the branch name to push changes against.";
-    exit 1;
+    echo "${0} expects only two optional arguments, REMOTE_NAME and REMOTE_BRANCH_NAME";
+    usage;
 fi
 
-if [[ "$#" -eq 1 ]]
+if [[ "$#" -gt 0 ]]
+then 
+    REMOTE=$1;
+    shift;
+fi
+
+if [[ "$#" -gt 0 ]]
 then 
     BRANCH=$1;
     shift;
