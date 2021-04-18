@@ -79,7 +79,7 @@ then
   exit 0;
 fi
 
-echo "${TARGETBRANCH} does not exist. Do u want to create and checkout branch ${TARGETBRANCH}"
+echo "${TARGETBRANCH} branch does not exist. Do u want to create and checkout branch ${TARGETBRANCH}"
 VALIDINPUT='false';
 
 while [[ $VALIDINPUT == 'false' ]] 
