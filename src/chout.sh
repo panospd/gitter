@@ -75,7 +75,7 @@ fi
 
 if [[ $FORCECREATENEWBRANCH -eq 1 ]]
 then
-  checkoutNewBranch();
+  checkoutNewBranch
   exit 0;
 fi
 
@@ -92,7 +92,7 @@ done
 
 if [[ $CREATENEW == 'y' ]]
 then
-  checkoutNewBranch();
+  checkoutNewBranch
   exit 0;
 fi
 
