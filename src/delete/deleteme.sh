@@ -50,39 +50,33 @@ fi
 
 git branch -d $BRANCHTODELETE &> /dev/null
 
-if [[ "${?}" -ne 0 ]]
+if [[ "${?}" -eq 0 ]]
 then
-  echo "Force deletion of ${BRANCHTODELETE}?(y/n)";
-  read FORCEDELETE;
-
-  VALIDINPUT=''
-  forceDeleteInputValidation;
-  while [[ $VALIDINPUT == 'false' ]] 
-  do
-    echo "Allowed input is y or n."
-    read FORCEDELETE;
-
-    forceDeleteInputValidation;
-  done  
-
-  if [[ "${FORCEDELETE}" = "y" ]]
-  then
-    git branch -D $BRANCHTODELETE;
-    echo "Successfully force-deleted ${BRANCHTODELETE}"
-    exit 0;
-  fi
+  echo "Successfully deleted ${BRANCHTODELETE}"
+  exit 0;
 fi
 
-echo "Successfully deleted ${BRANCHTODELETE}"
-exit 0;
+echo "Force deletion of ${BRANCHTODELETE}?(y/n)";
+read FORCEDELETE;
 
-forceDeleteInputValidation() {
-  if [[ ${FORCEDELETE} == "y" ]] || [[ ${FORCEDELETE} == "n" ]] 
-  then
-    VALIDINPUT = 'true';
-  else
-    VALIDINPUT = 'false';
-  fi
-}
+VALIDINPUT=''
+forceDeleteInputValidation;
+while [[ $VALIDINPUT == 'false' ]] 
+do
+  echo "Allowed input is y or n."
+  read FORCEDELETE;
+
+  forceDeleteInputValidation;
+done  
+
+if [[ "${FORCEDELETE}" = "y" ]]
+then
+  git branch -D $BRANCHTODELETE;
+  echo "Successfully force-deleted ${BRANCHTODELETE}"
+  exit 0;
+else
+  echo "${BRANCHTODELETE} was NOT deleted."
+  exit 0;
+fi
 
 
