@@ -86,7 +86,7 @@ echo "Commited changes."
 
 if [[ "${PUSH}" -eq 1 ]]
 then
-  push -r $REMOTE $BRANCH
+  push $REMOTE $BRANCH
 fi
 
 exit 0;
