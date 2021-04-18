@@ -46,18 +46,13 @@ then
   echo "Force deletion of ${BRANCHTODELETE}?(y/n)";
   read FORCEDELETE;
 
-  echo $FORCEDELETE;
-
-  VALIDINPUT='false';
+  VALIDINPUT = forceDeleteInputValidation;
   while [[ $VALIDINPUT == 'false' ]] 
   do
     echo "Allowed input is y or n."
     read FORCEDELETE;
 
-    if [[ ${FORCEDELETE} == "y" ]] || [[ ${FORCEDELETE} == "n" ]] 
-    then
-      VALIDINPUT='true';
-    fi
+    VALIDINPUT = forceDeleteInputValidation;
   done  
 
   if [[ "${FORCEDELETE}" = "y" ]]
@@ -70,5 +65,14 @@ fi
 
 echo "Successfully deleted ${BRANCHTODELETE}"
 exit 0;
+
+forceDeleteInputValidation() {
+  if [[ ${FORCEDELETE} == "y" ]] || [[ ${FORCEDELETE} == "n" ]] 
+  then
+    return 'true';
+  else
+    return 'false';
+  fi
+}
 
 
