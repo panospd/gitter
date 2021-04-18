@@ -24,11 +24,12 @@ fi
 
 GOTOBRANCH=master;
 
-while getopts "g:" OPT
+while getopts "g:f" OPT
 do
   case ${OPT} in
     g) GOTOBRANCH=${OPTARG} ;;
-    *) usage ;;
+    f) FORCEDELETE=1 ;;
+    ?) usage ;;
   esac
 done
 
@@ -53,6 +54,13 @@ git branch -d $BRANCHTODELETE &> /dev/null
 if [[ "${?}" -eq 0 ]]
 then
   echo "Successfully deleted ${BRANCHTODELETE}"
+  exit 0;
+fi
+
+if [[ $FORCEDELETE -eq 1 ]] 
+then
+  git branch -D $BRANCHTODELETE;
+  echo "Successfully force-deleted ${BRANCHTODELETE} branch"
   exit 0;
 fi
 
