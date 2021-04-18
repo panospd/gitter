@@ -44,9 +44,15 @@ A lightweight git wrapper for the command line to boost productivity.
 
 ## Delete branch
 
-### Deletes the current branch and optionally checks a specified branch. By default the target branch to checkout is master
+### Deletes the current branch or an optionally specified branch to delete. By default the newly checked out branch is master or an optionally specified branch to checkout
 
-#### deleteme [-g BRANCHTOGOTO]
+#### deleteme [-g BRANCHTOGOTO] [BRANCHTODELETE]
+
+## Checkout branch
+
+### Checkout existing branch or create a new one. Can specify an optional flag to forcibly create a new branch if not exist.
+
+#### chout [-n] BRANCHTOCHECKOUT;
 
 ## New branch
 
