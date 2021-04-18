@@ -1,8 +1,9 @@
 #!/bin/bash
 
 usage() {
-  echo "Usage: deleteme [-g GOTOBRANCH]" >&2;
+  echo "Usage: deleteme [-g GOTOBRANCH] [BRANCHTODELETE]" >&2;
   echo "-g Optional. The branch to checkout, default is master" >&2;
+  echo "BRANCHTODELETE Optional. The branch to delete, defaults to currently checked out" >&2;
   exit 1;
 }
 
