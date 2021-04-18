@@ -1,10 +1,11 @@
 #!/bin/bash
 
 usage() {
-  echo "Usage: ${0} -m 'COMMIT_MESSAGE' [-p] [REMOTE_NAME]";
+  echo "Usage: ${0} -m 'COMMIT_MESSAGE' [-p] [REMOTE_NAME] [REMOTE_BRANCH_NAME]";
   echo "  -m COMMIT_MESSAGE The commit message";
   echo "  -p If specified will push changes to respective remote";
   echo " REMOTE_NAME The remote to push changes to. If not specified, it defaults to 'origin'";
+  echo " REMOTE_BRANCH_NAME The remote to push changes to. If not specified, it defaults to currently checked out local branch's name";
   exit 1;
 }
 
@@ -41,15 +42,28 @@ then
   usage; 
 fi
 
-if [[ "${#}" -gt 1 ]]
+if [[ "${#}" -gt 2 ]]
 then 
-  echo "Only one optional argument expected, which is the remote name." >&2
+  echo "Only two optional argument expected, remote_name and remote_branch_name." >&2
   usage;
 fi
 
-if [[ "${#}" -eq 1 ]]
+if [[ "$PUSH" -ne 1 ]] && [[ "${#}" -gt 0 ]]
+then
+  echo 'REMOTE_NAME and BRANCH_NAME detected, without -p option, which enables pushing changes to remote.'
+  usage;
+fi
+
+if [[ "${#}" -gt 0 ]]
 then
   REMOTE=$1;
+  shift;
+fi
+
+if [[ "${#}" -gt 0 ]]
+then
+  BRANCH=$1;
+  shift;
 fi
 
 git add . &>/dev/null
