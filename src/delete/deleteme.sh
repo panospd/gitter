@@ -9,9 +9,9 @@ usage() {
 forceDeleteInputValidation() {
   if [[ ${FORCEDELETE} == "y" ]] || [[ ${FORCEDELETE} == "n" ]] 
   then
-    VALIDINPUT = 'true';
+    VALIDINPUT='true';
   else
-    VALIDINPUT = 'false';
+    VALIDINPUT='false';
   fi
 }
 
