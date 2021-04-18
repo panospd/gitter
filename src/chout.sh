@@ -68,7 +68,7 @@ BRANCHEXISTS=$(git branch --list $TARGETBRANCH);
 
 if [[ "${BRANCHEXISTS}" == *"$TARGETBRANCH"* ]]
 then
-  git checkout $TARGETBRANCH &> /dev/null/;
+  git checkout $TARGETBRANCH &> /dev/null;
   echo "Switched to branch $TARGETBRANCH";
   exit 0;
 fi
