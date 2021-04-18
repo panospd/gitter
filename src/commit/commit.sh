@@ -58,6 +58,7 @@ then
   shift;
 fi
 
+
 if [[ "${#}" -gt 0 ]]
 then
   BRANCH=$1;
