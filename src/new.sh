@@ -48,7 +48,7 @@ BRANCHALREADYEXISTS=$(git branch --list $NEWBRANCH);
 
 if [[ "$CURRENTBRANCH" = "${NEWBRANCH}" ]]
 then
-  echo "You are already in ${CURRENTBRANCH} branch";
+  echo "Already in branch ${CURRENTBRANCH}";
   exit 0;
 fi
 
@@ -61,7 +61,7 @@ fi
 
 if [[ "${BRANCHALREADYEXISTS}" == *"$NEWBRANCH"* ]]
 then
-  echo "Branch already exists. Do u want to checkout $NEWBRANCH? (y/n)";
+  echo "Branch already exists. Do u want to checkout branch $NEWBRANCH? (y/n)";
 
   VALIDINPUT='false';
   while [[ $VALIDINPUT == 'false' ]] 
@@ -75,7 +75,6 @@ then
   if [[ "${CHECKOUTBRANCH}" = "y" ]]
   then
     git checkout $NEWBRANCH;
-    echo "Switched to branch ${NEWBRANCH}";
     exit 0;
   else
     echo "Nothing to be done. Currently in branch ${CURRENTBRANCH}"
@@ -99,6 +98,6 @@ fi
 echo "Successfully created branch $NEWBRANCH";
 
 BRANCHNOW=$(git branch --show-current);
-echo "You are in branch $BRANCHNOW";
+echo "Currently in branch $BRANCHNOW";
 
 exit 0;
